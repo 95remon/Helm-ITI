@@ -1,0 +1,8 @@
+wget https://get.helm.sh/helm-v3.11.1-linux-amd64.tar.gz
+
+tar tvf helm-v3.11.1-linux-amd64.tar.gz
+
+tar xvf helm-v3.11.1-linux-amd64.tar.gz
+
+sudo mv linux-amd64/helm /usr/local/bin/
+
