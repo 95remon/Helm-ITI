@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "redis-chart1.fullname" . }}
+  labels:
+    {{- include "redis-chart1.labels" . | nindent 4 }}
+spec:
+  ports:
+  - port: {{ .Values.service.port }}
+    targetPort: {{ .Values.service.port }}
+  selector:
+    {{- include "redis-chart1.selectorLabels" . | nindent 4 }}
