@@ -2,8 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "python-chart2.fullname" . }}
-  labels:
-    {{- include "python-chart2.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
@@ -18,7 +16,7 @@ spec:
       - name: {{ .Chart.Name }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         ports:
-        - containerPort: {{ .Values.containerPort }}
+        - containerPort: {{ .Values.container.port }}
         envFrom:
-         - configMapRef:
-            name: "{{ .Values.configmapName }}"
+        - configMapRef:
+            name: "{{ .Values.configMap.name }}"

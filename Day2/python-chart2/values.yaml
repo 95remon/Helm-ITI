@@ -2,14 +2,18 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-containerPort: 8000
-
-configmapName: configmap-env
-
 replicaCount: 2
 
+container:
+  port: 8000
+
+configMap:
+  name: python-redis-config 
+
+
+
 image:
-  repository: docker.io/95remon/python-project
+  repository: 95remon/python-project
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "v1.0"
@@ -42,7 +46,7 @@ securityContext: {}
 
 service:
   type: NodePort
-  port: 8000
+  port: 80
   targetport: 8000
   nodeport: 30009
 

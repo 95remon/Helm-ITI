@@ -2,12 +2,24 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-containerPort: 6379
+
+redisLabel:
+  app: redis
+
+redisService: 
+  name: redis
+  targetport: 6379
+  port: 6379
 
 replicaCount: 2
 
+redisContainer:
+  name: redis
+  port: 6379
+  image: docker.io/redis
+
 image:
-  repository: redis
+  repository: docker.io/redis
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
@@ -40,7 +52,7 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 6379
+  port: 80
 
 ingress:
   enabled: false
